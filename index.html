@@ -88,18 +88,26 @@
 <body>
   <div id="blurOverlay" class="blur-overlay">
 </div>
-  <audio autoplay loop>
-    <source src="https://github.com/2qg5/mace/raw/main/NICSICK.mp3" type="audio/mp3">
-  </audio>
+  <audio id="backgroundAudio" loop>
+  <source src="background-music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  // Stop looking at my shitty code and get a fucking life. https://ecstacy.lol/
+  document.body.addEventListener("click", function() {
+    const audio = document.getElementById("backgroundAudio");
+    audio.play();
+  });
+</script>
 
   <div class="title">M A C E . G A Y</div>
   <img class="gif" src="Enchanted_Mace.gif" alt="Mace GIF">
-  <div class="changing-text" id="fadeText">mace.gay services available by c</div>
-  <div class="footer">Website developed by <a href="https://ecstacy.lol" target="_blank">2qg5</a></div>
+  <div class="changing-text" id="fadeText">Contact for available services.</div>
+  <div class="footer">Developed by <a href="https://interrupted.me/u" target="_blank">2qg5</a></div>
 
  <script>
   const textElement = document.getElementById("fadeText");
-  const texts = ["Contact for mace.gay services.", "Scamming is your best weapon."];
+  const texts = ["Contact for available services.", "Scamming is your best weapon."];
   let index = 0;
 
   function changeText() {
