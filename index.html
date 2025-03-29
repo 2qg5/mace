@@ -3,10 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Website</title>
+  <title>Mace.Gay</title>
+  <style>
+    @font-face {
+      font-family: 'NewTegomin';
+      src: url('NewTegomin-Regular.ttf') format('truetype');
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'NewTegomin', sans-serif;
+      text-align: center;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .title {
+      position: absolute;
+      top: 25%; /* Halfway between top and center */
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 48px;
+      font-weight: bold;
+      animation: colorChange 1.445s infinite alternate;
+    }
+
+    @keyframes colorChange {
+      0% { color: red; }
+      100% { color: darkred; }
+    }
+
+    .gif {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .changing-text {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      animation: fadeText 2s infinite alternate;
+    }
+
+    @keyframes fadeText {
+      0% { opacity: 1; content: "Contact for Mace services."; }
+      50% { opacity: 0; }
+      100% { opacity: 1; content: "Fraud is your best weapon."; }
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 16px;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <h1>MACE.GAY</h1>
-  <p>To be finished.</p>
+  <audio autoplay loop>
+    <source src="background-music.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="title">M A C E . G A Y</div>
+  <img class="gif" src="Enchanted_Mace.gif" alt="Mace GIF">
+  <div class="changing-text">Contact for Mace services.</div>
+  <div class="footer">Made by <a href="https://ecstacy.lol" target="_blank">2qg5</a></div>
 </body>
 </html>
