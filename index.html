@@ -26,7 +26,7 @@
       transform: translateX(-50%);
       font-size: 48px;
       font-weight: bold;
-      animation: colorChange 1.445s infinite alternate;
+      animation: colorChange 3s infinite alternate;
     }
 
     @keyframes colorChange {
@@ -47,13 +47,8 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 20px;
-      animation: fadeText 4s infinite alternate;
-    }
-
-    @keyframes fadeText {
-      0% { opacity: 1; content: "Contact for Mace services."; }
-      50% { opacity: 0; }
-      100% { opacity: 1; content: "Fraud is your best weapon."; }
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
     }
 
     .footer {
@@ -76,7 +71,22 @@
 
   <div class="title">M A C E . G A Y</div>
   <img class="gif" src="Enchanted_Mace.gif" alt="Mace GIF">
-  <div class="changing-text">Contact for Mace services.</div>
+  <div class="changing-text" id="fadeText">Contact for mace.gay services.</div>
   <div class="footer">Made by <a href="https://ecstacy.lol" target="_blank">2qg5</a></div>
+
+  <script>
+    const textElement = document.getElementById("fadeText");
+    const texts = ["Contact for Mace services.", "Fraud is your best weapon."];
+    let index = 0;
+
+    setInterval(() => {
+      textElement.style.opacity = 0;
+      setTimeout(() => {
+        index = (index + 1) % texts.length;
+        textElement.textContent = texts[index];
+        textElement.style.opacity = 1;
+      }, 1000);
+    }, 4000);
+  </script>
 </body>
 </html>
