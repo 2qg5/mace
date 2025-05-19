@@ -88,7 +88,7 @@
 <body>
   <div id="blurOverlay" class="blur-overlay"></div>
 
-  <audio id="backgroundAudio"></audio>
+  <audio id="backgroundAudio" preload="auto"></audio>
 
   <script>
     const audio = document.getElementById("backgroundAudio");
@@ -142,7 +142,10 @@
   document.getElementById('blurOverlay').addEventListener('click', function(e) {
     e.stopPropagation();
     this.style.display = 'none';
-  });
+    if (audio.paused) {
+    playNextSong();
+  }
+});
 </script>
 </body>
 
