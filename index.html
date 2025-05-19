@@ -86,19 +86,58 @@
 </style>
 </head>
 <body>
-  <div id="blurOverlay" class="blur-overlay">
-</div>
-  <audio id="backgroundAudio" loop>
-  <source src="https://github.com/2qg5/mace/raw/main/NICSICK.mp3" type="audio/mp3">
-</audio>
+  <div id="blurOverlay" class="blur-overlay"></div>
 
-<script>
-  // Stop looking at my shitty code and get a fucking life. https://ecstacy.lol/
-  document.body.addEventListener("click", function() {
+  <audio id="backgroundAudio"></audio>
+
+  <script>
     const audio = document.getElementById("backgroundAudio");
-    audio.play();
-  });
-</script>
+
+    // Stop looking at my garbage coding.                                                 https://guns.lol/2qg5
+    const songs = [
+      "https://github.com/2qg5/mace/raw/main/urnotcool.mp3",
+      "https://github.com/2qg5/mace/raw/main/uni.mp3",
+      "https://github.com/2qg5/mace/raw/main/fruity.mp3"
+      "https://github.com/2qg5/mace/raw/main/cyber.mp3"
+      "https://github.com/2qg5/mace/raw/main/adopt.mp3"
+      "https://github.com/2qg5/mace/raw/main/image.mp3"
+      // Stop looking at my garbage coding.                                               https://guns.lol/2qg5
+    ];
+
+    // Stop looking at my garbage coding.                                                 https://guns.lol/2qg5
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    let shuffledSongs = [...songs];
+    shuffle(shuffledSongs);
+    let currentIndex = 0;
+
+    function playNextSong() {
+      if (currentIndex >= shuffledSongs.length) {
+        // Stop looking at my garbage coding.                                               https://guns.lol/2qg5
+        shuffle(shuffledSongs);
+        currentIndex = 0;
+      }
+
+      audio.src = shuffledSongs[currentIndex];
+      audio.play();
+      currentIndex++;
+    }
+
+    document.body.addEventListener("click", function () {
+      if (audio.paused) {
+        playNextSong();
+      }
+    });
+
+    // Stop looking at my garbage coding.                                               https://guns.lol/2qg5
+    audio.addEventListener("ended", playNextSong);
+  </script>
+</body>
 
   <div class="title">M A C E . G A Y</div>
   <img class="gif" src="Enchanted_Mace.gif" alt="Mace GIF">
