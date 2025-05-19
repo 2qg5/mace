@@ -9,7 +9,7 @@
       font-family: 'NewTegomin';
       src: url('NewTegomin-Regular.ttf') format('truetype');
     }
-
+    
     body {
       background-color: black;
       color: white;
@@ -97,9 +97,9 @@
     const songs = [
       "https://github.com/2qg5/mace/raw/main/urnotcool.mp3",
       "https://github.com/2qg5/mace/raw/main/uni.mp3",
-      "https://github.com/2qg5/mace/raw/main/fruity.mp3"
-      "https://github.com/2qg5/mace/raw/main/cyber.mp3"
-      "https://github.com/2qg5/mace/raw/main/adopt.mp3"
+      "https://github.com/2qg5/mace/raw/main/fruity.mp3",
+      "https://github.com/2qg5/mace/raw/main/cyber.mp3",
+      "https://github.com/2qg5/mace/raw/main/adopt.mp3",
       "https://github.com/2qg5/mace/raw/main/image.mp3"
       // Stop looking at my garbage coding.                                               https://guns.lol/2qg5
     ];
@@ -137,6 +137,13 @@
     // Stop looking at my garbage coding.                                               https://guns.lol/2qg5
     audio.addEventListener("ended", playNextSong);
   </script>
+
+  <script>
+  document.getElementById('blurOverlay').addEventListener('click', function(e) {
+    e.stopPropagation();
+    this.style.display = 'none';
+  });
+</script>
 </body>
 
   <div class="title">M A C E . G A Y</div>
