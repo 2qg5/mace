@@ -123,71 +123,72 @@
   <div class="footer">Developed by <a href="https://guns.lol/laferrari" target="_blank">2qg5</a></div>
 
   <script>
-    const audio = document.getElementById("backgroundAudio");
-    const songs = [
-      "https://github.com/2qg5/mace/raw/main/urnotcool.mp3",
-      "https://github.com/2qg5/mace/raw/main/uni.mp3",
-      "https://github.com/2qg5/mace/raw/main/fruity.mp3",
-      "https://github.com/2qg5/mace/raw/main/cyber.mp3",
-      "https://github.com/2qg5/mace/raw/main/adopt.mp3",
-      "https://github.com/2qg5/mace/raw/main/image.mp3"
-    ];
+  const audio = document.getElementById("backgroundAudio");
+  const songs = [
+    "https://github.com/2qg5/mace/raw/main/urnotcool.mp3",
+    "https://github.com/2qg5/mace/raw/main/uni.mp3",
+    "https://github.com/2qg5/mace/raw/main/fruity.mp3",
+    "https://github.com/2qg5/mace/raw/main/cyber.mp3",
+    "https://github.com/2qg5/mace/raw/main/adopt.mp3",
+    "https://github.com/2qg5/mace/raw/main/image.mp3"
+  ];
 
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
     }
+  }
 
-    let shuffledSongs = [...songs];
-    shuffle(shuffledSongs);
-    let currentIndex = 0;
+  let shuffledSongs = [...songs];
+  shuffle(shuffledSongs);
+  let currentIndex = 0;
 
-    function playNextSong() {
-      if (currentIndex >= shuffledSongs.length) {
-        shuffle(shuffledSongs);
-        currentIndex = 0;
-      }
-      audio.src = shuffledSongs[currentIndex];
-      audio.play();
-      currentIndex++;
+  function playNextSong() {
+    if (currentIndex >= shuffledSongs.length) {
+      shuffle(shuffledSongs);
+      currentIndex = 0;
     }
+    audio.src = shuffledSongs[currentIndex];
+    audio.play();
+    currentIndex++;
+  }
 
-    document.body.addEventListener("click", function () {
-      if (audio.paused) {
-        playNextSong();
-      }
-    });
-
-    audio.addEventListener("ended", playNextSong);
-  </script>
-
-  <script>
-    document.getElementById('blurOverlay').addEventListener('click', function(e) {
-      e.stopPropagation();
-      this.style.display = 'none';
-      if (audio.paused) {
-        playNextSong();
-      }
-    });
-  </script>
-
-  <script>
-    const textElement = document.getElementById("fadeText");
-    const texts = ["Contact for available services.", "Scamming is your best weapon."];
-    let index = 0;
-
-    function changeText() {
-      textElement.style.opacity = 0;
+  // Single click event listener that handles both blur overlay and music
+  document.body.addEventListener("click", function (e) {
+    const blurOverlay = document.getElementById('blurOverlay');
+    if (blurOverlay.style.display !== 'none') {
+      blurOverlay.style.opacity = '0';
+      blurOverlay.style.transition = 'opacity 0.5s ease-in-out';
+      
       setTimeout(() => {
-        index = (index + 1) % texts.length;
-        textElement.textContent = texts[index];
-        textElement.style.opacity = 1;
+        blurOverlay.style.display = 'none';
       }, 500);
     }
+    
+    if (audio.paused) {
+      playNextSong();
+    }
+  });
 
-    setInterval(changeText, 4000);
-  </script>
+  audio.addEventListener("ended", playNextSong);
+</script>
+
+<script>
+  const textElement = document.getElementById("fadeText");
+  const texts = ["Contact for available services.", "Scamming is your best weapon."];
+  let index = 0;
+
+  function changeText() {
+    textElement.style.opacity = 0;
+    setTimeout(() => {
+      index = (index + 1) % texts.length;
+      textElement.textContent = texts[index];
+      textElement.style.opacity = 1;
+    }, 500);
+  }
+
+  setInterval(changeText, 4000);
+</script>
 </body>
 </html>
